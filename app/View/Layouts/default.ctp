@@ -24,7 +24,12 @@
                     <li><a href="#">Blog</a></li>
                     <li><a href="#">Photo</a></li>
                 </ul>
-                
+<?php echo $this->Form->create('User', array('action'=>'login'));?>
+                    username:<input type="text" name="username"/>
+                    password:<input type="password" name="password"/>
+                    <input type="hidden" name="action" value=<?php echo $this->params['action'];?> />
+                    <input type="hidden" name="controller" value=<?php echo $this->params['controller'];?> />
+<?php echo $this->Form->end('submit');?>
             </div>
             
         </div>
