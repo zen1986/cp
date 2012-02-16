@@ -5,8 +5,8 @@
         <title>Zvaya</title>
         <?php //echo $this->Html->css("prettify/prettify");?>
         <?php //echo $this->Html->script("prettify/prettify");?>
-        <?php //echo $this->Html->css("bootstrap/bootstrap");?>
-        <?php //echo $this->Html->css("ow");?>
+        <?php echo $this->Html->css("bootstrap");?>
+        <?php echo $this->Html->css("ow");?>
         <style type="text/css" media="screen">
             
             body {
@@ -14,32 +14,42 @@
         </style>
     </head>
 
-    <body onload="prettyPrint()">
+    <body>
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
-                <a class="brand" href="#">Zvaya</a>
+                <?php echo $this->Html->link('Zvaya', '/', array('class'=>'brand'));?>
                 <ul class="nav">
-                <li class="active"><?php echo $this->Html->link('Home', '/');?></li>
-                    <li><?php echo $this->Html->link('Blog', '/');?></li>
-                    <li><?php echo $this->Html->link('Photo', '/');?></li>
+                    <li <?php if ($this->params['action']=='home') echo "class='active'";?>><?php echo $this->Html->link('Home', '/');?></li>
+                    <li <?php if ($this->params['action']=='posts') echo "class='active'";?>><?php echo $this->Html->link('Blog', '/pages/posts');?></li>
+                    <li <?php if ($this->params['action']=='photos') echo "class='active'";?>><?php echo $this->Html->link('Photo', '/pages/photos');?></li>
                 </ul>
-                <?php 
-                    if (!($this->Session->read('Auth.User'))):
-                        echo $this->Form->create('User', array('action'=>'login'));
-                ?>
-                        username:<input type="text" name="username"/>
-                        password:<input type="password" name="password"/>
-                <?php 
-                        echo $this->Form->end('submit');
-                    else: 
-                        echo $this->Html->link('logout', '/users/logout');
-                    endif;
-                ?>
+                <ul class="nav pull-right">
+                    <?php 
+                        if ($this->params['action']!='login') {
+                            if (!($this->Session->read('Auth.User'))) {
+                                echo "<li>";
+                                echo $this->Html->link('Login', '/users/login');
+                                echo "</li>";
+                            }
+                            else {
+                                $session = $this->Session->read('Auth.User');
+                                echo "<li>";
+                                echo $this->Html->link('welcome ' .$session['username'], '', array('class'=>'greeting'));
+                                echo "</li>";
+                                echo "<li>";
+                                echo $this->Html->link('Logout', '/users/logout');
+                                echo "</li>";
+                            }
+                        }
+                    ?>
+                </ul>
             </div>
+
         </div>
     </div>
-    <?php echo $this->Session->flash();?>
-    <?php echo $content_for_layout;?>
+    <div class="container">
+        <?php echo $content_for_layout;?>
+    </div>
     </body>
 </html>

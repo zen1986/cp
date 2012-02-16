@@ -13,10 +13,10 @@ class UsersController extends AppController {
             $this->request->data=array('User'=>$data);
 
             if ($this->Auth->login()) {
-                $this->Session->setFlash(__('You are logged in'), 'default', array(), 'auth');
+                $this->Session->setFlash(__('You are logged in'), 'default', array('class'=>'alert alert-success'), 'auth');
                 return $this->redirect($this->Auth->redirect());
             } else {
-                $this->Session->setFlash(__('Username or password is incorrect'), 'default', array(), 'auth');
+                $this->Session->setFlash(__('Username or password is incorrect'), 'default', array('class'=>'alert alert-error'), 'auth');
             }
         }
     }

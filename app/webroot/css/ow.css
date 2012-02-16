@@ -2,9 +2,10 @@ div.navbar-inner {
     background: #003300;
 }
 
-#UserLoginForm div {
-    display: inline;
+.greeting {
+    text-transform: capitalize;
 }
-#UserLoginForm {
-    color: black;
+
+.btn {
+    margin-right: 4px;
 }
