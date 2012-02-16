@@ -1,3 +1,10 @@
 div.navbar-inner {
     background: #003300;
 }
+
+#UserLoginForm div {
+    display: inline;
+}
+#UserLoginForm {
+    color: black;
+}

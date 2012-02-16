@@ -1,7 +1,7 @@
 <div class="container">
     <div class="span10 " id="name">
         <div  class="page-header">
-        <h1>This is my first blog</h1>
+        <h1>today is thursday</h1>
         </div>
 
         

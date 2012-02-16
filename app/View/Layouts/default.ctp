@@ -5,8 +5,8 @@
         <title>Zvaya</title>
         <?php //echo $this->Html->css("prettify/prettify");?>
         <?php //echo $this->Html->script("prettify/prettify");?>
-        <?php echo $this->Html->css("bootstrap/bootstrap");?>
-        <?php echo $this->Html->css("ow");?>
+        <?php //echo $this->Html->css("bootstrap/bootstrap");?>
+        <?php //echo $this->Html->css("ow");?>
         <style type="text/css" media="screen">
             
             body {
@@ -20,21 +20,26 @@
             <div class="container">
                 <a class="brand" href="#">Zvaya</a>
                 <ul class="nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Photo</a></li>
+                <li class="active"><?php echo $this->Html->link('Home', '/');?></li>
+                    <li><?php echo $this->Html->link('Blog', '/');?></li>
+                    <li><?php echo $this->Html->link('Photo', '/');?></li>
                 </ul>
-<?php echo $this->Form->create('User', array('action'=>'login'));?>
-                    username:<input type="text" name="username"/>
-                    password:<input type="password" name="password"/>
-                    <input type="hidden" name="action" value=<?php echo $this->params['action'];?> />
-                    <input type="hidden" name="controller" value=<?php echo $this->params['controller'];?> />
-<?php echo $this->Form->end('submit');?>
+                <?php 
+                    if (!($this->Session->read('Auth.User'))):
+                        echo $this->Form->create('User', array('action'=>'login'));
+                ?>
+                        username:<input type="text" name="username"/>
+                        password:<input type="password" name="password"/>
+                <?php 
+                        echo $this->Form->end('submit');
+                    else: 
+                        echo $this->Html->link('logout', '/users/logout');
+                    endif;
+                ?>
             </div>
-            
         </div>
-        
     </div>
+    <?php echo $this->Session->flash();?>
     <?php echo $content_for_layout;?>
     </body>
 </html>
