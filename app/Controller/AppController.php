@@ -33,6 +33,6 @@ App::uses('Controller', 'Controller');
  * @link http://book.cakephp.org/view/957/The-App-Controller
  */
 class AppController extends Controller {
-    public $helpers = array('Form', 'Html', 'Session', 'Paginator');
+    public $helpers = array('Js', 'Form', 'Html', 'Session', 'Paginator');
     public $components = array('Auth', 'Session', 'Paginator');
 }

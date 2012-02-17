@@ -5,6 +5,7 @@
         <title>Zvaya</title>
         <?php //echo $this->Html->css("prettify/prettify");?>
         <?php //echo $this->Html->script("prettify/prettify");?>
+        <?php echo $this->Html->script("jquery");?>
         <?php echo $this->Html->css("bootstrap");?>
         <?php echo $this->Html->css("ow");?>
         <style type="text/css" media="screen">
@@ -51,5 +52,6 @@
     <div class="container">
         <?php echo $content_for_layout;?>
     </div>
+    <?php echo $this->Js->writeBuffer();?>
     </body>
 </html>

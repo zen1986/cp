@@ -9,3 +9,11 @@ div.navbar-inner {
 .btn {
     margin-right: 4px;
 }
+
+textarea.body {
+    width: 80%;
+}
+
+.post {
+    margin-bottom: 20px;
+}
